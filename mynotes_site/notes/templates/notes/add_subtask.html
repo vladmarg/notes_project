@@ -1,0 +1,32 @@
+{% extends 'notes/base.html' %}
+
+{% block title %}
+    ADD SUBS
+{% endblock %}
+
+{% block body %}
+    <h1>Add subtask:</h1>
+    <p>
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for note in notes %}
+                <li>
+                    <input type="checkbox" name="is_selected" value="{{ note.id }}">
+                    {{ note.title }}
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">
+            add
+        </button>
+    </form>
+    </p>
+    <p>
+    <form action="{% url 'notes:all_notes' %}">
+    <button type="submit">
+        Back to main
+    </button>
+    </form>
+    </p>
+{% endblock %}

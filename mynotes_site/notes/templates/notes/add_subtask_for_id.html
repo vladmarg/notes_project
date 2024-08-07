@@ -1,0 +1,32 @@
+{% extends 'notes/base.html' %}
+
+{% block title %}
+    Add subtask
+{% endblock %}
+
+{% block body %}
+    <h1>Add subtask for note(id={{ note_id }})</h1>
+    <p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">
+        add
+    </button>
+    </form>
+    </p>
+    <p>
+    <form action="{% url 'notes:add_subtask' %}">
+        <button type="submit">
+            Back to previous page
+        </button>
+    </form>
+    </p>
+    <p>
+    <form action="{% url 'notes:all_notes' %}">
+        <button type="submit">
+            Back to main page
+        </button>
+    </form>
+    </p>
+{% endblock %}

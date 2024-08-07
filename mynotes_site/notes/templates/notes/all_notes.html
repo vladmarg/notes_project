@@ -1,0 +1,41 @@
+{% extends 'notes/base.html' %}
+
+{% block title %}
+    All Notes
+{% endblock %}
+
+{% block body %}
+    <h1>All notes:</h1>
+    <p>
+    <ul>
+        {% for note in notes %}
+            {% if note.subtasks_set.all %}
+                <li>{{ note.title }}</li>
+                <ul>
+                    {% for subtask in note.subtasks_set.all %}
+                        <li>{{ subtask.title }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <li>{{ note.title }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    </p>
+    <p>
+    <form action="{% url 'notes:create_note' %}">
+        <button type="submit">Create a new one</button>
+    </form>
+    </p>
+    <p>
+    <form action="{% url 'notes:delete_selected' %}">
+        <button type="submit">Delete</button>
+    </form>
+    </p>
+    </p>
+    <p>
+    <form action="{% url 'notes:add_subtask' %}">
+        <button type="submit">add sub</button>
+    </form>
+    </p>
+{% endblock %}

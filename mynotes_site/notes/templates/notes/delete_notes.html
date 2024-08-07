@@ -1,0 +1,31 @@
+{% extends 'notes/base.html' %}
+
+{% block title %}
+    Delete Notes
+{% endblock %}
+
+{% block body %}
+    <h1>Delete notes:</h1>
+    <p>
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for note in notes %}
+
+                <li>
+                    <input type="checkbox" name="is_delete" value="{{ note.id }}">
+                    {{ note.title }}
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">DELETE</button>
+    </form>
+    </p>
+    <p>
+    <form action="{% url 'notes:all_notes' %}">
+        <button type="submit">
+            Back to notes
+        </button>
+    </form>
+    </p>
+{% endblock %}
