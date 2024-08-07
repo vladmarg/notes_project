@@ -7,8 +7,7 @@ from .models import Note, Subtasks
 
 def all_notes(request: HttpRequest) -> HttpResponse:
     context = {
-        'notes': Note.objects.all(),
-        'subtasks': Subtasks.objects.all(),
+        'notes': Note.objects.all().prefetch_related('subtasks_set'),
     }
     return render(request, 'notes/all_notes.html', context=context)
 
@@ -33,7 +32,7 @@ def delete_notes(request: HttpRequest) -> HttpResponse:
         url = reverse('notes:all_notes')
         return redirect(url)
     context = {
-        'notes': Note.objects.all,
+        'notes': Note.objects.all(),
     }
     return render(request, 'notes/delete_notes.html', context=context)
 

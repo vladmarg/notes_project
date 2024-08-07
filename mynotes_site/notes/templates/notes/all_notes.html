@@ -10,12 +10,14 @@
     <ul>
         {% for note in notes %}
             {% if note.subtasks_set.all %}
-                <li>{{ note.title }}</li>
-                <ul>
-                    {% for subtask in note.subtasks_set.all %}
-                        <li>{{ subtask.title }}</li>
-                    {% endfor %}
-                </ul>
+                <li>
+                    {{ note.title }}
+                    <ul>
+                        {% for subtask in note.subtasks_set.all %}
+                            <li>{{ subtask.title }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
             {% else %}
                 <li>{{ note.title }}</li>
             {% endif %}
