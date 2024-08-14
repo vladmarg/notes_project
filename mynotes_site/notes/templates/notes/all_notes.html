@@ -26,18 +26,18 @@
     </p>
     <p>
     <form action="{% url 'notes:create_note' %}">
-        <button type="submit">Create a new one</button>
+        <button type="submit" class="btn btn-success">Create a new one</button>
     </form>
     </p>
     <p>
     <form action="{% url 'notes:delete_selected' %}">
-        <button type="submit">Delete</button>
+        <button type="submit" class="btn btn-danger">Delete</button>
     </form>
     </p>
     </p>
     <p>
     <form action="{% url 'notes:add_subtask' %}">
-        <button type="submit">add sub</button>
+        <button type="submit" class="btn btn-info">add sub</button>
     </form>
     </p>
 {% endblock %}
